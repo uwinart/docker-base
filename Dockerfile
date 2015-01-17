@@ -38,11 +38,10 @@ RUN cd /usr/local/src/ && \
   make install clean && \
   git clone https://github.com/khmelevskii/vimrc.git ~/.vim_runtime && \
   ln -s /root/.vim_runtime/.vimrc /root/.vimrc && \
-  curl https://raw.githubusercontent.com/Shougo/neobundle.vim/master/bin/install.sh | sh
-#
-# RUN sed -i -e "s/call add(s:settings.plugin_groups, 'db')/\" call add(s:settings.plugin_groups, 'db')/g" /root/.vimrc && \
-#   sed -i -e "s/call add(s:settings.plugin_groups, 'autocomplete')/\" call add(s:settings.plugin_groups, 'autocomplete')/g" /root/.vimrc && \
-#   sed -i -e "s/call add(s:settings.plugin_groups, 'tern')/\" call add(s:settings.plugin_groups, 'tern')/g" /root/.vimrc && \
-#   yes "yes" | vim -c q
+  curl https://raw.githubusercontent.com/Shougo/neobundle.vim/master/bin/install.sh | sh && \
+  sed -i -e "s/call add(s:settings.plugin_groups, 'db')/\" call add(s:settings.plugin_groups, 'db')/g" /root/.vimrc && \
+  sed -i -e "s/call add(s:settings.plugin_groups, 'autocomplete')/\" call add(s:settings.plugin_groups, 'autocomplete')/g" /root/.vimrc && \
+  sed -i -e "s/call add(s:settings.plugin_groups, 'tern')/\" call add(s:settings.plugin_groups, 'tern')/g" /root/.vimrc && \
+  ~/.vim/bundle/neobundle.vim/bin/neoinstall
 
 ENV TERM xterm-256color
