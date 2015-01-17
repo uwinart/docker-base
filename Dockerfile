@@ -30,19 +30,19 @@ RUN apt-get update -q && \
 ADD ./adds/uwinart.zsh-theme /root/.oh-my-zsh/themes/uwinart.zsh-theme
 ADD ./adds/zshrc /root/.zshrc
 
-# Install vim
-RUN cd /usr/local/src/ && \
-  hg clone https://vim.googlecode.com/hg/ vim && \
-  cd vim && \
-  ./configure --enable-pythoninterp --enable-perlinterp --enable-luainterp --enable-largefile --enable-rubyinterp --enable-cscope --enable-multibyte --enable-fontset && \
-  make install clean && \
-  git clone https://github.com/khmelevskii/vimrc.git ~/.vim_runtime && \
-  ln -s /root/.vim_runtime/.vimrc /root/.vimrc && \
-  curl https://raw.githubusercontent.com/Shougo/neobundle.vim/master/bin/install.sh | sh
-
-RUN sed -i -e "s/call add(s:settings.plugin_groups, 'db')/\" call add(s:settings.plugin_groups, 'db')/g" /root/.vimrc && \
-  sed -i -e "s/call add(s:settings.plugin_groups, 'autocomplete')/\" call add(s:settings.plugin_groups, 'autocomplete')/g" /root/.vimrc && \
-  sed -i -e "s/call add(s:settings.plugin_groups, 'tern')/\" call add(s:settings.plugin_groups, 'tern')/g" /root/.vimrc && \
-  yes "yes" | vim -c q
+# # Install vim
+# RUN cd /usr/local/src/ && \
+#   hg clone https://vim.googlecode.com/hg/ vim && \
+#   cd vim && \
+#   ./configure --enable-pythoninterp --enable-perlinterp --enable-luainterp --enable-largefile --enable-rubyinterp --enable-cscope --enable-multibyte --enable-fontset && \
+#   make install clean && \
+#   git clone https://github.com/khmelevskii/vimrc.git ~/.vim_runtime && \
+#   ln -s /root/.vim_runtime/.vimrc /root/.vimrc && \
+#   curl https://raw.githubusercontent.com/Shougo/neobundle.vim/master/bin/install.sh | sh
+#
+# RUN sed -i -e "s/call add(s:settings.plugin_groups, 'db')/\" call add(s:settings.plugin_groups, 'db')/g" /root/.vimrc && \
+#   sed -i -e "s/call add(s:settings.plugin_groups, 'autocomplete')/\" call add(s:settings.plugin_groups, 'autocomplete')/g" /root/.vimrc && \
+#   sed -i -e "s/call add(s:settings.plugin_groups, 'tern')/\" call add(s:settings.plugin_groups, 'tern')/g" /root/.vimrc && \
+#   yes "yes" | vim -c q
 
 ENV TERM xterm-256color
