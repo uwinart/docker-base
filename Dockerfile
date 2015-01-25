@@ -17,7 +17,7 @@ RUN apt-get update -q && \
   sed -i -e "s/# uk_UA.UTF-8 UTF-8/uk_UA.UTF-8 UTF-8/g" /etc/locale.gen && \
   locale-gen && \
   apt-get install -yq build-essential autotools-dev automake pkg-config \
-    ncurses-dev cmake aptitude \
+    ncurses-dev cmake aptitude cron \
     curl wget \
     git mercurial \
     htop \
