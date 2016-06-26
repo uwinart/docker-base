@@ -21,27 +21,9 @@ RUN apt-get update -q && \
     curl wget \
     git mercurial \
     htop \
-    autojump zsh tmux \
-    python2.7-dev ruby-dev liblua5.1-dev libperl-dev && \
+    autojump zsh tmux && \
+  apt-get install -yq python2.7-dev ruby-dev libperl-dev && \
   apt-get clean && \
-  rm -rf /var/lib/apt/lists/* && \
-  curl -L http://install.ohmyz.sh | zsh
-
-ADD ./adds/uwinart.zsh-theme /root/.oh-my-zsh/themes/uwinart.zsh-theme
-ADD ./adds/zshrc /root/.zshrc
-
-# Install vim
-RUN cd /usr/local/src/ && \
-  hg clone https://vim.googlecode.com/hg/ vim && \
-  cd vim && \
-  ./configure --enable-pythoninterp --enable-perlinterp --enable-luainterp --enable-largefile --enable-rubyinterp --enable-cscope --enable-multibyte --enable-fontset && \
-  make install clean && \
-  git clone https://github.com/khmelevskii/vimrc.git ~/.vim_runtime && \
-  ln -s /root/.vim_runtime/.vimrc /root/.vimrc && \
-  curl https://raw.githubusercontent.com/Shougo/neobundle.vim/master/bin/install.sh | sh && \
-  sed -i -e "s/call add(s:settings.plugin_groups, 'db')/\" call add(s:settings.plugin_groups, 'db')/g" /root/.vimrc && \
-  sed -i -e "s/call add(s:settings.plugin_groups, 'autocomplete')/\" call add(s:settings.plugin_groups, 'autocomplete')/g" /root/.vimrc && \
-  sed -i -e "s/call add(s:settings.plugin_groups, 'tern')/\" call add(s:settings.plugin_groups, 'tern')/g" /root/.vimrc && \
-  ~/.vim/bundle/neobundle.vim/bin/neoinstall
+  rm -rf /var/lib/apt/lists/*
 
 ENV TERM xterm-256color
