@@ -1,5 +1,5 @@
 # Version 0.0.1
-FROM debian:wheezy
+FROM debian:jessie
 
 MAINTAINER Yurii Khmelevskii <y@uwinart.com>
 
