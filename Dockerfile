@@ -26,8 +26,8 @@ RUN apt-get update -q && \
 
 RUN echo 'deb http://httpredir.debian.org/debian jessie-backports main' > /etc/apt/sources.list.d/jessie-backports.list
 ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64
-ENV JAVA_VERSION 8u91
-ENV JAVA_DEBIAN_VERSION 8u91-b14-1~bpo8+1
+ENV JAVA_VERSION 8u102
+ENV JAVA_DEBIAN_VERSION 8u102-b14.1-1~bpo8+1
 ENV CA_CERTIFICATES_JAVA_VERSION 20140324
 
 RUN set -x && \
